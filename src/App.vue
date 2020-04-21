@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
+     <FooterGuide/>
   </div>
 </template>
 
 <script>
+import FooterGuide from './components/FooterGuide'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    FooterGuide
+  }
 }
 </script>
 
 <style lang="stylus" ref="stylesheet/stylus">
-app
-  font-size 14px
+#app
+  width 100%
+  height 100%
+  background  #f5f5f5
 </style>
