@@ -1,13 +1,15 @@
 <template>
     <div>
-        Order
+       <HeaderTop title="订单列表"></HeaderTop>
     </div>
 </template>
 
 <script>
-
+import HeaderTop from '../components/HeaderTop.vue'
 export default {
-
+  components: {
+    HeaderTop
+  }
 }
 </script>
 

@@ -1,46 +1,59 @@
 <template>
-  <div>
-    <!--首页导航-->
-    <nav class="msite_nav">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-             <div class="swiper-slide">
-                 <a href="" class="link_to_food">
-                     <div>
-                         <!-- <img src="../assets/logo.png" alt=""> -->
-                     </div>
-                     <span>甜品饮料</span>
-                 </a>
-                   <a href="" class="link_to_food">
-                     <div>
-                         <!-- <img src="../assets/logo.png" alt=""> -->
-                     </div>
-                     <span>商超便利</span>
-                 </a>
-             </div>
-            <div class="swiper-slide">slider2</div>
-            <div class="swiper-slide">slider3</div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </nav>
-  </div>
+    <section class="msize">
+           <!--首页头部-->
+            <HeaderTop :title = address>
+              <span class="header_search" slot = "left">
+                <i class="iconfont iconsousuo"></i>
+              </span>
+              <span slot="right">
+                <span class="header_login" slot = "right">
+                  <span class="header_login_text">登录|注册</span>
+                </span>
+              </span>
+            </HeaderTop>
+          <div class="miste-content-wrapper">
+            <!--轮播分类导航-->
+            <div class="msize_nav">
+              <!--首页导航-->
+            <nav class="msite_nav">
+              <SwiperNav></SwiperNav>
+            </nav>
+            </div>
+            <!--附近商家-->
+            <div>
+                222
+            </div>
+          </div>
+    </section>
 </template>
-
 <script>
-import Swiper from 'swiper'
-import 'swiper/css/swiper.min.css'
-
+import HeaderTop from '../components/HeaderTop.vue'
+import SwiperNav from '../components/Mise/swiper/SwiperNav.vue'
 export default {
-  mounted () {
-    var mySwiper = new Swiper('.swiper-container', {
-      autoplay: true, // 可选选项，自动滑动
-      pagination: {
-        el: '.swiper-pagination'
-      }
-    })
+  components: {
+    HeaderTop,
+    SwiperNav
+  },
+  data () {
+    return {
+      address: '软件谷科创城A1南'
+    }
   }
 }
 </script>
 
-<style lang="stylus" ref = "stylesheet/stylus"></style>
+<style lang="stylus" ref="stylesheet/stylus">
+ @import "../assets/stylus/mixins.styl"
+.msite  //首页
+  width 100%
+ .miste-content-wrapper
+      position fixed
+      top: 45px
+      bottom: 46px
+      width: 100%
+      .msite_nav
+         bottom-border-1px(#e4e4e4)
+         margin-top 15px
+         height 200px
+         background #fff
+</style>

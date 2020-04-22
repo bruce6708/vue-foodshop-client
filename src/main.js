@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// swiper
+import vueSwiper from 'vue-awesome-swiper'
+import 'swiper/css/swiper.min.css'
+Vue.use(vueSwiper)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
