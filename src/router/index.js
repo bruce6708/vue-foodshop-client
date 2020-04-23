@@ -4,30 +4,47 @@ import Msize from '../pages/Msize.vue'
 import Search from '../pages/Search.vue'
 import Order from '../pages/Order.vue'
 import Profile from '../pages/Profile'
+import Login from '../pages/Login.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/msize',
+      path: '/',
       component: Msize
+    },
+    {
+      path: '/msize',
+      component: Msize,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/search',
-      component: Search
+      component: Search,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/order',
-      component: Order
+      component: Order,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/profile',
-      component: Profile
+      component: Profile,
+      meta: {
+        showFooter: true
+      }
     },
     {
-      path: '/',
-      component: Msize
+      path: '/login',
+      component: Login
     }
   ]
 })

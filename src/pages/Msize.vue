@@ -7,7 +7,7 @@
               </span>
               <span slot="right">
                 <span class="header_login" slot = "right">
-                  <span class="header_login_text">登录|注册</span>
+                  <router-link to="/login" class="header_login_text">登录|注册</router-link>
                 </span>
               </span>
             </HeaderTop>

@@ -1,9 +1,11 @@
 <template>
-  Login
+    <div>
+        Login
+    </div>
 </template>
 
 <script>
 </script>
 
-<style>
+<style lang="stylus" ref = "stylesheet/stylus">
 </style>

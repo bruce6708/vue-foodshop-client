@@ -1,2 +1,2 @@
-import 'ajax' from 'ajax'
-export const reqTest => () ajax('')
+import ajax from './ajax.js'
+export const reqTest = () => ajax('/view/bigscreenAttention')
