@@ -21,7 +21,7 @@
             </div>
             <!--附近商家-->
             <div>
-                222
+                {{test}}
             </div>
           </div>
     </section>
@@ -29,10 +29,14 @@
 <script>
 import HeaderTop from '../components/HeaderTop.vue'
 import SwiperNav from '../components/Mise/swiper/SwiperNav.vue'
+import {mapState} from 'vuex'
 export default {
   components: {
     HeaderTop,
     SwiperNav
+  },
+  computed: {
+    ...mapState(['test'])
   },
   data () {
     return {
