@@ -30,10 +30,14 @@
 import HeaderTop from '../components/HeaderTop.vue'
 import SwiperNav from '../components/Mise/swiper/SwiperNav.vue'
 import {mapState} from 'vuex'
+import {reqTest} from '../api/index'
 export default {
   components: {
     HeaderTop,
     SwiperNav
+  },
+  mounted () {
+    this.getTest()
   },
   computed: {
     ...mapState(['test'])
@@ -41,6 +45,12 @@ export default {
   data () {
     return {
       address: '软件谷科创城A1南'
+    }
+  },
+  methods: {
+    async getTest () {
+      const result = await reqTest()
+      console.log(result)
     }
   }
 }
