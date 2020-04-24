@@ -1,7 +1,13 @@
-import axios from 'axios'
+import Axios from 'axios'
 /**
  * ajax请求函数模块
  */
+
+const axios = Axios.create({
+  timeout: 1000 * 60,
+  withCredentials: false,
+  baseURL: '/api'
+})
 export default function ajax (url, data = {}, type = 'GET') {
   return new Promise(function (resolve, reject) {
     let promise

@@ -12,7 +12,10 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Msize
+      component: Msize,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/msize',
