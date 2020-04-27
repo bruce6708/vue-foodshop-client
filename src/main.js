@@ -8,11 +8,13 @@ import store from './store'
 // swiper
 import vueSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.min.css'
-Vue.use(vueSwiper)
 
 // ElementUI
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(vueSwiper)
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 

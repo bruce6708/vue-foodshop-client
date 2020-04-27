@@ -35,7 +35,8 @@ import HeaderTop from '../components/HeaderTop.vue'
 import SwiperNav from '../components/Mise/swiper/SwiperNav.vue'
 import ShopList from '../components/Mise/ShopList.vue'
 import {mapState} from 'vuex'
-import {reqTest, reqTest1} from '../api/index'
+import {reqTest, mgmtLogin} from '../api/index'
+import * as utility from 'utility'
 export default {
   components: {
     HeaderTop,
@@ -60,7 +61,8 @@ export default {
       console.log(result)
     },
     async getTest1 () {
-      const result = await reqTest1('222', '222')
+      const pwd = utility.md5(123456)
+      const result = await mgmtLogin('fyt', pwd)
       console.log(result)
     }
   }

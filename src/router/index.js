@@ -5,10 +5,12 @@ import Search from '../pages/Search.vue'
 import Order from '../pages/Order.vue'
 import Profile from '../pages/Profile'
 import Login from '../pages/Login.vue'
+import TestTable from '../components/TestTable.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -48,6 +50,10 @@ export default new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/test',
+      component: TestTable
     }
   ]
 })
