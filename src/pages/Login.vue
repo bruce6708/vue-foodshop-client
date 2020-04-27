@@ -9,14 +9,16 @@
             </div>
           </div>
           <div class="login_content">
-            <form>
+            <form @submit.prevent ="login">
               <div :class="{on: loginWay}">
                 <section class="login_message">
-                  <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
-                  <button :disabled="!isPhone" class="get_verification" :class="{right_phone: isPhone}" @click.prevent="getCode">获取验证码</button>
+                  <input type="text" maxlength="11" placeholder="手机号" v-model="phone">
+                  <button :disabled="!isPhone" class="get_verification" :class="{right_phone: isPhone}" @click.prevent="getCode">
+                    {{CodeSendTime > 0 ? `已发送` + `(`+ CodeSendTime +`)s`:'获取验证码'}}
+                    </button>
                 </section>
                 <section class="login_verification">
-                  <input type="tel" maxlength="8" placeholder="验证码">
+                  <input type="text" maxlength="8" placeholder="验证码" v-model="code">
                 </section>
                 <section class="login_hint">
                   温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意
@@ -26,17 +28,17 @@
               <div :class="{on: !loginWay}">
                 <section>
                   <section class="login_message">
-                    <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名">
+                    <input type="text" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
                   </section>
                   <section class="login_verification">
-                    <input type="tel" maxlength="8" placeholder="密码">
-                    <div class="switch_button off">
-                      <div class="switch_circle"></div>
-                      <span class="switch_text">...</span>
+                    <input :type="isShowPwd ? 'text' : 'password'" maxlength="8" placeholder="密码" v-model="pwd">
+                    <div class="switch_button" :class="isShowPwd ? 'on' : 'off'" @click="isShowPwd = !isShowPwd">
+                      <div class="switch_circle" :class="{right: isShowPwd}"></div>
+                      <span class="switch_text">{{isShowPwd?'abc':'...'}}</span>
                     </div>
                   </section>
                   <section class="login_message">
-                    <input type="text" maxlength="11" placeholder="验证码">
+                    <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
                     <!-- <img class="get_verification" src="./images/captcha.svg" alt="captcha"> -->
                   </section>
                 </section>
@@ -56,7 +58,13 @@ export default {
   data () {
     return {
       loginWay: true, // true表示短信登录，false表示密码登录
-      phone: ''
+      phone: '', // 手机号
+      code: '', // 验证码
+      name: '', // 用户名
+      pwd: '', // 密码
+      captcha: '', // 图形验证码
+      CodeSendTime: 0, // 计时的时间
+      isShowPwd: false // 是否显示密码
     }
   },
   computed: {
@@ -65,9 +73,38 @@ export default {
     }
   },
   methods: {
+    // 异步获取验证码
     getCode () {
-      alert(111)
-      // 启动倒计时
+      if (!this.CodeSendTime) {
+        this.CodeSendTime = 60
+        // 启动倒计时
+        const intervalId = setInterval(() => {
+          this.CodeSendTime--
+          console.log(this.CodeSendTime)
+          if (this.CodeSendTime === 0) {
+            clearInterval(intervalId)
+          }
+        }, 1000)
+        // 发送短信
+      }
+    },
+    // 异步登录
+    login () {
+      // 前台表单验证
+      if (this.loginWay) { // 短信登录
+        const {isPhone, phone, code} = this
+        if (!isPhone) {
+          // 手机号不正确
+          alert('手机号不正确')
+        } else if (!phone) {
+          alert('手机号不能为空')
+        } else if (!code) {
+          alert('验证码不能为空')
+        }
+      } else { // 密码登录
+        const {name, pwd, captcha} = this
+        alert(name + pwd + captcha)
+      }
     }
   }
 }
